@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class AccountParser {
 
-    private String multipleAccountsSymbols  ;
+    protected String multipleAccountsSymbols  ;
 
     public AccountParser(String multipleAccountsSymbols) {
         this.multipleAccountsSymbols = multipleAccountsSymbols;
@@ -18,7 +18,7 @@ public class AccountParser {
         Matcher m = Pattern.compile(Account.SYMBOLS_PATTERN).matcher(multipleAccountsSymbols);
         while (m.find()) {
             Account account = new Account(m.group());
-            allMatches.add(account.getAccountNumber());
+            allMatches.add(account.getAccountInfo());
         }
         return allMatches;
     }
