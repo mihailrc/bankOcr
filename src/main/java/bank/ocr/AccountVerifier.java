@@ -21,7 +21,7 @@ public class AccountVerifier {
         return checksum % 11;
     }
 
-    private boolean isIllegible() {
+    public boolean isIllegible() {
         return !isLegible();
     }
 

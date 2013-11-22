@@ -33,6 +33,22 @@ public class Account {
         return accountVerifier.isValid();
     }
 
+    public boolean isIllegible() {
+        return accountVerifier.isIllegible();
+    }
+
+    public String getAccountInfo() {
+        StringBuilder sb = new StringBuilder(accountNumber);
+        if (isIllegible()) {
+            sb.append(" ILL");
+        } else {
+            if (!isValid()) {
+                sb.append(" ERR");
+            }
+        }
+        return sb.toString();
+    }
+
     private String symbolsToDigits() {
         DigitRecognizer digitRecognizer = new DigitRecognizer();
         StringBuilder accountString = new StringBuilder();

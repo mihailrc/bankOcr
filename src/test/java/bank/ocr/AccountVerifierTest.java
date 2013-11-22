@@ -44,4 +44,10 @@ public class AccountVerifierTest {
         assertFalse(new AccountVerifier("???").isValid());
         assertFalse(new AccountVerifier("557508000").isValid());
     }
+
+    @Test
+    public void identifiesIllegibleAccountNumber() {
+        assertTrue(new AccountVerifier("????").isIllegible());
+        assertTrue(new AccountVerifier("1234").isIllegible());
+    }
 }

@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 public class AccountTest {
 
     static Map<String, String> accountsMap = new HashMap<String, String>();
+    static Map<String, String> accountsInfoMap = new HashMap<String, String>();
 
     {
         accountsMap.put(
@@ -68,6 +69,26 @@ public class AccountTest {
         "  | _| _||_||_ |_   ||_||_|\n" +
         "  ||_  _|  | _||_|  ||_| _|\n" +
         "                           \n", "123456789");
+        accountsInfoMap.put(
+        " _  _  _  _  _  _  _  _    \n" +
+        "| || || || || || || ||_   |\n" +
+        "|_||_||_||_||_||_||_| _|  |\n" +
+        "                           \n", "000000051");
+        accountsInfoMap.put(
+        "                           \n" +
+        "  |  |  |  |  |  |  |  |  |\n" +
+        "  |  |  |  |  |  |  |  |  |\n" +
+        "                           \n", "111111111 ERR");
+        accountsInfoMap.put(
+        "    _  _  _  _  _  _     _ \n" +
+        "|_||_|| || ||_   |  |  | _ \n" +
+        "  | _||_||_||_|  |  |  | _|\n" +
+        "                           \n", "49006771? ILL");
+        accountsInfoMap.put(
+        "    _  _     _  _  _  _  _ \n" +
+        "  | _| _||_| _ |_   ||_||_|\n" +
+        "  ||_  _|  | _||_|  ||_| _ \n" +
+        "                           \n", "1234?678? ILL");
     }
 
     @Test
@@ -75,6 +96,14 @@ public class AccountTest {
         for (String symbols : accountsMap.keySet()) {
             Account account = new Account(symbols);
             assertEquals(accountsMap.get(symbols), account.getAccountNumber());
+        }
+    }
+
+    @Test
+    public void extractsAccountInfoFromSymbols() {
+        for (String symbols : accountsInfoMap.keySet()) {
+            Account account = new Account(symbols);
+            assertEquals(accountsInfoMap.get(symbols), account.getAccountInfo());
         }
     }
 
