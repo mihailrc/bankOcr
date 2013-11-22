@@ -76,4 +76,11 @@ public class AccountTest {
             assertEquals(accountsMap.get(symbols), account.getAccountNumber());
         }
     }
+
+    @Test(expected = InvalidAccountPatternException.class)
+    public void throwsExceptionForInvalidAccountPattern() {
+        String invalid = "invalid";
+        new Account(invalid);
+        fail();
+    }
 }

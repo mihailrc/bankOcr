@@ -20,15 +20,15 @@ public class AccountParserTest {
 
     @Test
     public void parsesMultipleAccounts() {
-        AccountParser accountParser = new AccountParser();
-        assertEquals(Arrays.asList("000000000", "111111111"), accountParser.parseAccounts(accountsSymbols));
+        AccountParser accountParser = new AccountParser(accountsSymbols);
+        assertEquals(Arrays.asList("000000000", "111111111"), accountParser.parseAccounts());
     }
 
     @Test
     public void ignoresSymbolsThatDoNotMatchAccountPattern() {
-        AccountParser accountParser = new AccountParser();
         String validAndInvalidSymbols = "invalid " + accountsSymbols + "more bad stuff";
-        assertEquals(Arrays.asList("000000000", "111111111"), accountParser.parseAccounts(validAndInvalidSymbols));
+        AccountParser accountParser = new AccountParser(validAndInvalidSymbols);
+        assertEquals(Arrays.asList("000000000", "111111111"), accountParser.parseAccounts());
     }
 
 }

@@ -12,6 +12,12 @@ public class Account {
     private String accountNumber;
 
     public Account(String symbols) {
+        if (!symbols.matches(SYMBOLS_PATTERN)) {
+            String message = "Oops! " + symbols + " does not look like valid input. " +
+            "Valid symbols need to match the following pattern" + SYMBOLS_PATTERN;
+            throw new InvalidAccountPatternException(message);
+        }
+
         this.symbols = symbols;
         this.accountNumber = symbolsToDigits();
     }
