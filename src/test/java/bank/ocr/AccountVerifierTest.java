@@ -37,6 +37,7 @@ public class AccountVerifierTest {
     public void identifiesValidAccountNumber() {
         assertTrue(new AccountVerifier("000000000").isValid());
         assertTrue(new AccountVerifier("457508000").isValid());
+        assertTrue(new AccountVerifier("888886888").isValid());
     }
 
     @Test

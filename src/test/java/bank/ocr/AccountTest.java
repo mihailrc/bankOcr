@@ -3,6 +3,7 @@ package bank.ocr;
 import bank.ocr.exceptions.InvalidAccountPatternException;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -134,5 +135,16 @@ public class AccountTest {
         "                           \n";
         Account account = new Account(accountSymbols);
         assertFalse(account.isValid());
+    }
+
+    @Test
+    public void findsValidAlternatives() {
+        String accountSymbols =
+        " _  _  _  _  _  _  _  _  _ \n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        "                           \n";
+        Account account = new Account(accountSymbols);
+        assertEquals(Arrays.asList("888886888","888888880","888888988"), account.findValidAlternatives());
     }
 }

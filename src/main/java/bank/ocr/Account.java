@@ -2,6 +2,8 @@ package bank.ocr;
 
 import bank.ocr.exceptions.InvalidAccountPatternException;
 
+import java.util.*;
+
 public class Account {
 
     public static final int DIGIT_WIDTH = 3;
@@ -33,6 +35,15 @@ public class Account {
         return accountVerifier.isIllegible();
     }
 
+    public List<String> findValidAlternatives() {
+        List<String> alternatives = new ArrayList<String>();
+        for (int i = 0; i < ACCOUNT_DIGITS; i++) {
+            alternatives.addAll(findValidAlternativesForIndex(i));
+        }
+        Collections.sort(alternatives);
+        return alternatives;
+    }
+
     public String getAccountInfo() {
         StringBuilder sb = new StringBuilder(accountNumber);
         if (isIllegible()) {
@@ -51,6 +62,29 @@ public class Account {
             "Valid symbols need to match the following pattern" + SYMBOLS_PATTERN;
             throw new InvalidAccountPatternException(message);
         }
+    }
+
+    private List<String> findValidAlternativesForIndex(int index) {
+        List<String> alternatives = new ArrayList<String>();
+        String digitSymbols = extractSymbols(index);
+        List<String> alternativeDigits = new DigitRecognizer().getAlternatives(digitSymbols);
+        for (String alternativeDigit : alternativeDigits) {
+            String alternativeAccountNumber = swapDigit(index, alternativeDigit);
+            if (new AccountVerifier(alternativeAccountNumber).isValid()) {
+                alternatives.add(alternativeAccountNumber);
+            }
+        }
+        return alternatives;
+    }
+
+    private String swapDigit(int index, String alternativeDigit) {
+        StringBuilder alternativeAccountNumber = new StringBuilder(accountNumber.substring(0, index));
+        alternativeAccountNumber.append(alternativeDigit);
+        if (index + 1 <= accountNumber.length()) {
+            alternativeAccountNumber.append(accountNumber.substring(index + 1));
+
+        }
+        return alternativeAccountNumber.toString();
     }
 
     private String symbolsToDigits() {
