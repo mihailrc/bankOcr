@@ -14,16 +14,12 @@ public class Account {
     private AccountVerifier accountVerifier;
 
     public Account(String symbols) {
-        if (!symbols.matches(SYMBOLS_PATTERN)) {
-            String message = "Oops! " + symbols + " does not look like valid input. " +
-            "Valid symbols need to match the following pattern" + SYMBOLS_PATTERN;
-            throw new InvalidAccountPatternException(message);
-        }
-
+        validateInput(symbols);
         this.symbols = symbols;
         this.accountNumber = symbolsToDigits();
         this.accountVerifier = new AccountVerifier(accountNumber);
     }
+
 
     public String getAccountNumber() {
         return accountNumber;
@@ -47,6 +43,14 @@ public class Account {
             }
         }
         return sb.toString();
+    }
+
+    private void validateInput(String symbols) {
+        if (!symbols.matches(SYMBOLS_PATTERN)) {
+            String message = "Oops! " + symbols + " does not look like valid input. " +
+            "Valid symbols need to match the following pattern" + SYMBOLS_PATTERN;
+            throw new InvalidAccountPatternException(message);
+        }
     }
 
     private String symbolsToDigits() {

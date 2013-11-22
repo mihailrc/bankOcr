@@ -11,9 +11,7 @@ public class AccountVerifier {
     }
 
     public int checksum() {
-        if (isIllegible()) {
-            throw new IllegibleAccountNumberException("Cannot calculate checksum for " + accountNumber);
-        }
+        validateInput();
         int checksum = 0;
         for (int i = 0; i < 9; i++) {
             checksum = checksum + Integer.valueOf(accountNumber.substring(i, i + 1)) * (9 - i);
@@ -21,8 +19,14 @@ public class AccountVerifier {
         return checksum % 11;
     }
 
+
     public boolean isIllegible() {
         return !isLegible();
+    }
+
+
+    public boolean isValid() {
+        return isLegible() && checksum() == 0;
     }
 
     private boolean isLegible() {
@@ -30,8 +34,11 @@ public class AccountVerifier {
 
     }
 
-    public boolean isValid() {
-        return isLegible() && checksum() == 0;
+    private void validateInput() {
+        if (isIllegible()) {
+            throw new IllegibleAccountNumberException("Cannot calculate checksum for " + accountNumber);
+        }
     }
+
 
 }
