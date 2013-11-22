@@ -9,6 +9,7 @@ public class Account {
 
     private String symbols;
     private String accountNumber;
+    private AccountVerifier accountVerifier;
 
     public Account(String symbols) {
         if (!symbols.matches(SYMBOLS_PATTERN)) {
@@ -19,10 +20,15 @@ public class Account {
 
         this.symbols = symbols;
         this.accountNumber = symbolsToDigits();
+        this.accountVerifier = new AccountVerifier(accountNumber);
     }
 
     public String getAccountNumber() {
         return accountNumber;
+    }
+
+    public boolean isValid() {
+        return accountVerifier.isValid();
     }
 
     private String symbolsToDigits() {

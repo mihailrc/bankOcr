@@ -83,4 +83,26 @@ public class AccountTest {
         new Account(invalid);
         fail();
     }
+
+    @Test
+    public void identifiesValidAccount() {
+        String accountSymbols =
+        " _  _  _  _  _  _  _  _  _ \n" +
+        "| || || || || || || || || |\n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        "                           \n";
+        Account account = new Account(accountSymbols);
+        assertTrue(account.isValid());
+    }
+
+    @Test
+    public void identifiesInvalidAccount() {
+        String accountSymbols =
+        "                           \n" +
+        "  |  |  |  |  |  |  |  |  |\n" +
+        "  |  |  |  |  |  |  |  |  |\n" +
+        "                           \n";
+        Account account = new Account(accountSymbols);
+        assertFalse(account.isValid());
+    }
 }

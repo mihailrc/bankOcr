@@ -33,13 +33,13 @@ public class AccountVerifierTest {
     }
 
     @Test
-    public void detectsValidAccountNumber() {
+    public void identifiesValidAccountNumber() {
         assertTrue(new AccountVerifier("000000000").isValid());
         assertTrue(new AccountVerifier("457508000").isValid());
     }
 
     @Test
-    public void detectsInvalidAccountNumber() {
+    public void identifiesInvalidAccountNumber() {
         assertFalse(new AccountVerifier("???").isValid());
         assertFalse(new AccountVerifier("557508000").isValid());
     }
