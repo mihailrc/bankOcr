@@ -2,29 +2,78 @@ package bank.ocr;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import java.util.HashMap;
+import java.util.Map;
+
+import static org.junit.Assert.*;
 
 public class AccountTest {
 
-    @Test
-    public void extractsAccountNumberFromZeroSymbols() {
-        String zeros =
+    static Map<String, String> accountsMap = new HashMap<String, String>();
+
+    {
+        accountsMap.put(
         " _  _  _  _  _  _  _  _  _ \n" +
         "| || || || || || || || || |\n" +
         "|_||_||_||_||_||_||_||_||_|\n" +
-        "                           ";
-        Account account = new Account(zeros);
-        assertEquals("000000000", account.getAccountNumber());
-    }
-
-    @Test
-    public void extractsAccountNumberFromOneSymbols() {
-        String ones =
+        "                           ", "000000000");
+        accountsMap.put(
         "                           \n" +
         "  |  |  |  |  |  |  |  |  |\n" +
         "  |  |  |  |  |  |  |  |  |\n" +
-        "                           ";
-        Account account = new Account(ones);
-        assertEquals("111111111", account.getAccountNumber());
+        "                           ", "111111111");
+        accountsMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        " _| _| _| _| _| _| _| _| _|\n" +
+        "|_ |_ |_ |_ |_ |_ |_ |_ |_ \n" +
+        "                           ", "222222222");
+        accountsMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        " _| _| _| _| _| _| _| _| _|\n" +
+        " _| _| _| _| _| _| _| _| _|\n" +
+        "                           ", "333333333");
+        accountsMap.put(
+        "                           \n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        "  |  |  |  |  |  |  |  |  |\n" +
+        "                           ", "444444444");
+        accountsMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        "|_ |_ |_ |_ |_ |_ |_ |_ |_ \n" +
+        " _| _| _| _| _| _| _| _| _|\n" +
+        "                           ", "555555555");
+        accountsMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        "|_ |_ |_ |_ |_ |_ |_ |_ |_ \n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        "                           ", "666666666");
+        accountsMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        "  |  |  |  |  |  |  |  |  |\n" +
+        "  |  |  |  |  |  |  |  |  |\n" +
+        "                           ", "777777777");
+        accountsMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        "                           ", "888888888");
+        accountsMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        "|_||_||_||_||_||_||_||_||_|\n" +
+        " _| _| _| _| _| _| _| _| _|\n" +
+        "                           ", "999999999");
+        accountsMap.put(
+        "    _  _     _  _  _  _  _ \n" +
+        "  | _| _||_||_ |_   ||_||_|\n" +
+        "  ||_  _|  | _||_|  ||_| _|\n" +
+        "                           ", "123456789");
+    }
+
+    @Test
+    public void extractsAccountNumberFromSymbols() {
+        for (String symbols : accountsMap.keySet()) {
+            Account account = new Account(symbols);
+            assertEquals(accountsMap.get(symbols), account.getAccountNumber());
+        }
     }
 }
