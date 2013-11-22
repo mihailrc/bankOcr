@@ -1,5 +1,6 @@
 package bank.ocr;
 
+import bank.ocr.exceptions.InvalidAccountPatternException;
 import org.junit.Test;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package bank.ocr;
+package bank.ocr.exceptions;
 
 public class IllegibleAccountNumberException extends RuntimeException {
     public IllegibleAccountNumberException() {

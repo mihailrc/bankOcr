@@ -1,5 +1,7 @@
 package bank.ocr;
 
+import bank.ocr.exceptions.IllegibleAccountNumberException;
+
 public class AccountVerifier {
 
     private String accountNumber;

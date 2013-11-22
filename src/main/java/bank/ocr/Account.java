@@ -1,5 +1,7 @@
 package bank.ocr;
 
+import bank.ocr.exceptions.InvalidAccountPatternException;
+
 public class Account {
 
     public static final int DIGIT_WIDTH = 3;
