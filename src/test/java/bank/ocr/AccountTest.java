@@ -71,25 +71,10 @@ public class AccountTest {
         "  ||_  _|  | _||_|  ||_| _|\n" +
         "                           \n", "123456789");
         accountsInfoMap.put(
-        " _  _  _  _  _  _  _  _    \n" +
-        "| || || || || || || ||_   |\n" +
-        "|_||_||_||_||_||_||_| _|  |\n" +
-        "                           \n", "000000051");
-        accountsInfoMap.put(
         "                           \n" +
         "  |  |  |  |  |  |  |  |  |\n" +
         "  |  |  |  |  |  |  |  |  |\n" +
-        "                           \n", "111111111 ERR");
-        accountsInfoMap.put(
-        "    _  _  _  _  _  _     _ \n" +
-        "|_||_|| || ||_   |  |  | _ \n" +
-        "  | _||_||_||_|  |  |  | _|\n" +
-        "                           \n", "49006771? ILL");
-        accountsInfoMap.put(
-        "    _  _     _  _  _  _  _ \n" +
-        "  | _| _||_| _ |_   ||_||_|\n" +
-        "  ||_  _|  | _||_|  ||_| _ \n" +
-        "                           \n", "1234?678? ILL");
+        "                           \n", "711111111");
     }
 
     @Test
@@ -145,6 +130,6 @@ public class AccountTest {
         "|_||_||_||_||_||_||_||_||_|\n" +
         "                           \n";
         Account account = new Account(accountSymbols);
-        assertEquals(Arrays.asList("888886888","888888880","888888988"), account.findValidAlternatives());
+        assertEquals(Arrays.asList("888886888", "888888880", "888888988"), account.findValidAlternatives());
     }
 }

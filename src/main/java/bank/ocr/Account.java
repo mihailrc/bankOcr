@@ -45,12 +45,12 @@ public class Account {
     }
 
     public String getAccountInfo() {
-        StringBuilder sb = new StringBuilder(accountNumber);
-        if (isIllegible()) {
-            sb.append(" ILL");
-        } else {
-            if (!isValid()) {
-                sb.append(" ERR");
+        StringBuilder sb = new StringBuilder();
+        if(isValid()){
+            sb.append(accountNumber);
+        }else{
+            if(findValidAlternatives().size()==1){
+                sb.append(findValidAlternatives().get(0));
             }
         }
         return sb.toString();
