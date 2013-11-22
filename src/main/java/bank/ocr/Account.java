@@ -7,7 +7,6 @@ public class Account {
     //three lines of 27 spaces _ or | followed by one line of 27 spaces
     public static final String SYMBOLS_PATTERN = "([ _|]{27}\n){3} {27}\n";
 
-
     private String symbols;
     private String accountNumber;
 

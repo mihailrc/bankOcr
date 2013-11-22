@@ -7,15 +7,15 @@ import java.util.regex.Pattern;
 
 public class AccountParser {
 
-    private String accountsSymbols;
+    private String multipleAccountsSymbols  ;
 
-    public AccountParser(String accountsSymbols) {
-        this.accountsSymbols = accountsSymbols;
+    public AccountParser(String multipleAccountsSymbols) {
+        this.multipleAccountsSymbols = multipleAccountsSymbols;
     }
 
     public List<String> parseAccounts() {
         List<String> allMatches = new ArrayList<String>();
-        Matcher m = Pattern.compile(Account.SYMBOLS_PATTERN).matcher(accountsSymbols);
+        Matcher m = Pattern.compile(Account.SYMBOLS_PATTERN).matcher(multipleAccountsSymbols);
         while (m.find()) {
             Account account = new Account(m.group());
             allMatches.add(account.getAccountNumber());
