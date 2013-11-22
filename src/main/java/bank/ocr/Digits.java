@@ -62,6 +62,12 @@ public enum Digits {
     " _|" +
     "   ", "9");
 
+    public static final String SYMBOLS_PATTERN = "[ _|]{12}";
+
+    public static boolean hasExpectedPattern(String symbols) {
+        return symbols != null && symbols.matches(SYMBOLS_PATTERN);
+    }
+
     private String symbols;
     private String digit;
 
