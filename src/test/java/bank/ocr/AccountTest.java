@@ -7,11 +7,13 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 public class AccountTest {
 
     static Map<String, String> accountsMap = new HashMap<String, String>();
+    static Map<String, String> accountsWithStatusMap = new HashMap<String, String>();
     static Map<String, String> accountsInfoMap = new HashMap<String, String>();
 
     {
@@ -70,6 +72,21 @@ public class AccountTest {
         "  | _| _||_||_ |_   ||_||_|\n" +
         "  ||_  _|  | _||_|  ||_| _|\n" +
         "                           \n", "123456789");
+        accountsWithStatusMap.put(
+        " _  _  _  _  _  _  _  _    \n" +
+        "| || || || || || || ||_   |\n" +
+        "|_||_||_||_||_||_||_| _|  |\n" +
+        "                           \n", "000000051");
+        accountsWithStatusMap.put(
+        "    _  _  _  _  _  _     _ \n" +
+        "|_||_|| || ||_   |  |  | _ \n" +
+        "  | _||_||_||_|  |  |  | _|\n" +
+        "                           \n", "49006771? ILL");
+        accountsWithStatusMap.put(
+        "    _  _     _  _  _  _  _ \n" +
+        "  | _| _||_| _ |_   ||_||_|\n" +
+        "  ||_  _|  | _||_|  ||_| _ \n" +
+        "                           \n", "1234?678? ILL");
         accountsInfoMap.put(
         "                           \n" +
         "  |  |  |  |  |  |  |  |  |\n" +
@@ -142,6 +159,14 @@ public class AccountTest {
         for (String symbols : accountsMap.keySet()) {
             Account account = new Account(symbols);
             assertEquals(accountsMap.get(symbols), account.getAccountNumber());
+        }
+    }
+
+    @Test
+    public void extractsAccountWithStatusFromSymbols() {
+        for (String symbols : accountsWithStatusMap.keySet()) {
+            Account account = new Account(symbols);
+            assertEquals(accountsWithStatusMap.get(symbols), account.getAccountWithStatus());
         }
     }
 
