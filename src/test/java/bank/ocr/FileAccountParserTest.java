@@ -20,7 +20,6 @@ public class FileAccountParserTest {
         dir = new File("target", "testData");
         dir.mkdir();
         symbolsFile = createFile("symbols.txt");
-        symbolsFile.createNewFile();
         FileUtil.writeToFile(symbols, symbolsFile);
         numbersFile = createFile("accountNumbers.txt");
     }
