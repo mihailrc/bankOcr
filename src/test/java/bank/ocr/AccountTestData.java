@@ -1,13 +1,12 @@
 package bank.ocr;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class AccountTestData {
 
-    public static Map<String, String> accountsMap = new HashMap<String, String>();
-    public static Map<String, String> accountsWithStatusMap = new HashMap<String, String>();
-    public static Map<String, String> accountsInfoMap = new HashMap<String, String>();
+    public static Map<String, String> accountsMap = new LinkedHashMap<String, String>();
+    public static Map<String, String> accountsWithStatusMap = new LinkedHashMap<String, String>();
+    public static Map<String, String> accountsInfoMap = new LinkedHashMap<String, String>();
 
     {
         accountsMap.put(
@@ -146,4 +145,27 @@ public class AccountTestData {
         "  | _||_||_||_|  |  |    _|\n" +
         "                           \n", "4908677?? ILL");
     }
+
+    public static String getAccountSymbols(Map<String, String> map) {
+        return listToString(new ArrayList<String>(map.keySet()));
+    }
+
+    public static List<String> getAccountInfo(Map<String, String> map) {
+        return new ArrayList<String>(map.values());
+    }
+
+    public static String getAccountInfoAsString(Map<String, String> map) {
+        return listToString(getAccountInfo(map));
+    }
+
+    private static String listToString(List<String> values) {
+        List<String> accountNumbers = values;
+        StringBuilder sb = new StringBuilder();
+        for (String accountNumber : accountNumbers) {
+            sb.append(accountNumber);
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+
 }

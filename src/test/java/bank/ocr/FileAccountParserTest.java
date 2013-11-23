@@ -10,40 +10,14 @@ import static org.junit.Assert.assertEquals;
 
 public class FileAccountParserTest {
 
-    private String symbols =
-    " _  _  _  _  _  _  _  _  _ \n" +
-    "| || || || || || || || || |\n" +
-    "|_||_||_||_||_||_||_||_||_|\n" +
-    "                           \n" +
-    "                           \n" +
-    "  |  |  |  |  |  |  |  |  |\n" +
-    "  |  |  |  |  |  |  |  |  |\n" +
-    "                           \n" +
-    " _  _  _  _  _  _  _  _    \n" +
-    "| || || || || || || ||_   |\n" +
-    "|_||_||_||_||_||_||_| _|  |\n" +
-    "                           \n" +
-    "    _  _  _  _  _  _     _ \n" +
-    "|_||_|| || ||_   |  |  | _ \n" +
-    "  | _||_||_||_|  |  |  | _|\n" +
-    "                           \n" +
-    "    _  _     _  _  _  _  _ \n" +
-    "  | _| _||_| _ |_   ||_||_|\n" +
-    "  ||_  _|  | _||_|  ||_| _ \n" +
-    "                           \n";
-
-    private String numbers =
-    "000000000\n" +
-    "711111111\n" +
-    "000000051\n" +
-    "49006771? ILL\n" +
-    "1234?678? ILL\n";
+    private String symbols = AccountTestData.getAccountSymbols(AccountTestData.accountsInfoMap);
+    private String accountsInfo = AccountTestData.getAccountInfoAsString(AccountTestData.accountsInfoMap);
 
     private File dir, symbolsFile, numbersFile;
 
     @Before
     public void setUp() throws IOException {
-        dir = new File("target","testData");
+        dir = new File("target", "testData");
         dir.mkdir();
         symbolsFile = createFile("symbols.txt");
         symbolsFile.createNewFile();
@@ -55,7 +29,7 @@ public class FileAccountParserTest {
     public void readsAccountSymbolsFromFileAndWritesAccountNumbersToFile() throws IOException {
         FileAccountParser fileAccountParser = new FileAccountParser(symbolsFile);
         fileAccountParser.writeAccountNumbers(numbersFile);
-        assertEquals(numbers, FileUtil.readToString(numbersFile));
+        assertEquals(accountsInfo, FileUtil.readToString(numbersFile));
     }
 
     private File createFile(String fileName) throws IOException {
