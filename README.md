@@ -3,7 +3,7 @@ bankOcr
 
 Solution for Bank OCR Kata from http://codingdojo.org/cgi-bin/wiki.pl?KataBankOCR
 
-To master branch has the following tags:
+The master branch has the following tags:
  * UseCase1
  * UseCase2
  * UseCase3
