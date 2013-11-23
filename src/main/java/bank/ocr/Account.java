@@ -44,16 +44,45 @@ public class Account {
         return alternatives;
     }
 
-    public String getAccountInfo() {
-        StringBuilder sb = new StringBuilder();
-        if(isValid()){
-            sb.append(accountNumber);
-        }else{
-            if(findValidAlternatives().size()==1){
-                sb.append(findValidAlternatives().get(0));
+    public String getAccountWithStatus() {
+        StringBuilder info = new StringBuilder(accountNumber);
+        if (isIllegible()) {
+            info.append(" ILL");
+        } else {
+            if (!isValid()) {
+                info.append(" ERR");
             }
         }
-        return sb.toString();
+        return info.toString();
+    }
+
+    public String getAccountInfo() {
+        StringBuilder accountInfo = new StringBuilder();
+        if (isValid()) {
+            accountInfo.append(accountNumber);
+        } else {
+            List<String> alternatives = findValidAlternatives();
+            if (alternatives.isEmpty()) {
+                accountInfo.append(getAccountWithStatus());
+            }
+            if (alternatives.size() == 1) {
+                accountInfo.append(alternatives.get(0));
+            }
+            if (alternatives.size() > 1) {
+                accountInfo.append(accountNumber);
+                accountInfo.append(" AMB ");
+                accountInfo.append(quotedStrings(alternatives));
+            }
+        }
+        return accountInfo.toString();
+    }
+
+    private List<String> quotedStrings(List<String> strings) {
+        List<String> quotedStrings = new ArrayList<String>();
+        for (String string : strings) {
+            quotedStrings.add("'" + string + "'");
+        }
+        return quotedStrings;
     }
 
     private void validateInput(String symbols) {

@@ -21,14 +21,14 @@ public class AccountParserTest {
     @Test
     public void parsesMultipleAccounts() {
         AccountParser accountParser = new AccountParser(accountsSymbols);
-        assertEquals(Arrays.asList("000000000", "111111111 ERR"), accountParser.parseAccounts());
+        assertEquals(Arrays.asList("000000000", "711111111"), accountParser.parseAccounts());
     }
 
     @Test
     public void ignoresSymbolsThatDoNotMatchAccountPattern() {
         String validAndInvalidSymbols = "invalid " + accountsSymbols + "more bad stuff";
         AccountParser accountParser = new AccountParser(validAndInvalidSymbols);
-        assertEquals(Arrays.asList("000000000", "111111111 ERR"), accountParser.parseAccounts());
+        assertEquals(Arrays.asList("000000000", "711111111"), accountParser.parseAccounts());
     }
 
 }

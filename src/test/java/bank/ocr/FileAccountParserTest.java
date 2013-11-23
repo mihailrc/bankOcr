@@ -34,7 +34,7 @@ public class FileAccountParserTest {
 
     private String numbers =
     "000000000\n" +
-    "111111111 ERR\n" +
+    "711111111\n" +
     "000000051\n" +
     "49006771? ILL\n" +
     "1234?678? ILL\n";
