@@ -4,10 +4,8 @@ import bank.ocr.exceptions.InvalidAccountPatternException;
 import org.junit.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 
-import static junit.framework.Assert.assertEquals;
 import static org.junit.Assert.*;
 
 public class AccountTest {
