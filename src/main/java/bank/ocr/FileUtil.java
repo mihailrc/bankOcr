@@ -10,7 +10,7 @@ public class FileUtil {
         try {
             int byteCount = 0;
             char[] buffer = new char[BUFFER_SIZE];
-            int bytesRead = -1;
+            int bytesRead;
             while ((bytesRead = in.read(buffer)) != -1) {
                 out.write(buffer, 0, bytesRead);
                 byteCount += bytesRead;

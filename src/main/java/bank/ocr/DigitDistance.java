@@ -4,11 +4,10 @@ import bank.ocr.exceptions.InvalidDigitPatternException;
 
 public class DigitDistance {
 
-
     public int getDistance(String first, String second) {
         validateInput(first, second);
         int distance = 0;
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < first.length(); i++) {
             if (!first.substring(i, i + 1).equals(second.substring(i, i + 1))) {
                 distance++;
             }

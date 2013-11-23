@@ -31,7 +31,7 @@ public class Account {
         return accountVerifier.isValid();
     }
 
-    public boolean isIllegible() {
+    private boolean isIllegible() {
         return accountVerifier.isIllegible();
     }
 
