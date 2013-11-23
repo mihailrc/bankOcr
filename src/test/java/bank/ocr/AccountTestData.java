@@ -144,6 +144,11 @@ public class AccountTestData {
         "|_||_|| ||_||_   |  |  | _ \n" +
         "  | _||_||_||_|  |  |    _|\n" +
         "                           \n", "4908677?? ILL");
+        accountsInfoMap.put(
+        " _  _  _  _  _  _  _  _  _ \n" +
+        " _| _| _| _| _| _| _| _| _|\n" +
+        "|_ |_ |_ |_ |_ |_ |_ |_ |_ \n" +
+        "                           \n", "222222222 ERR");
     }
 
     public static String getAccountSymbols(Map<String, String> map) {
