@@ -8,7 +8,7 @@ public class AccountTestData {
     public static Map<String, String> accountsWithStatusMap = new LinkedHashMap<String, String>();
     public static Map<String, String> accountsInfoMap = new LinkedHashMap<String, String>();
 
-    {
+    static {
         accountsMap.put(
         " _  _  _  _  _  _  _  _  _ \n" +
         "| || || || || || || || || |\n" +
