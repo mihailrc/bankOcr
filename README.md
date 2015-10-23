@@ -12,4 +12,4 @@ The master branch has the following tags:
 To run the tests type
     mvn test
 
-Have fun!
+Have fun!!
