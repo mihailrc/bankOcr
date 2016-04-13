@@ -1,7 +1,7 @@
 bankOcr
 =======
 
-Solution for Bank OCR Kata from http://codingdojo.org/cgi-bin/wiki.pl?KataBankOCR
+Solution for Bank OCR Kata from http://codingdojo.org/cgi-bin/index.pl?KataBankOCR
 
 The master branch has the following tags:
  * UseCase1
